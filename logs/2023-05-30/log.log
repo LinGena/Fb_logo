@@ -1,0 +1,59 @@
+2023-05-30 19:16:24,442 - __main__ - CRITICAL - main - 'FacebookContent' object has no attribute 'proxies'
+Traceback (most recent call last):
+  File "c:\Server\data\htdocs\Fb\main.py", line 16, in main
+    cl.get_content(url)
+  File "c:\Server\data\htdocs\Fb\controllers\scraper.py", line 147, in get_content
+    src = self.get_img_content(logo)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Server\data\htdocs\Fb\controllers\scraper.py", line 134, in get_img_content
+    scraped_data = scraper.get(url=link, proxies=self.proxies)
+                                                 ^^^^^^^^^^^^
+AttributeError: 'FacebookContent' object has no attribute 'proxies'
+2023-05-30 22:59:58,620 - controllers.scraper - DEBUG - get_logo_url - FB link of profile_photo received: https://www.facebook.com/photo/?fbid=655892086586590&set=a.655892093253256
+2023-05-30 22:59:59,057 - controllers.scraper - DEBUG - get_logo_image_url - Logo url received
+2023-05-30 22:59:59,092 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/SundanceVacations/325940462_395051859501150_1407098108888418396_n.jpg
+2023-05-30 23:32:02,727 - controllers.scraper - DEBUG - get_logo_url - FB link of profile_photo received: https://www.facebook.com/photo/?fbid=655892086586590&set=a.655892093253256
+2023-05-30 23:32:03,015 - controllers.scraper - DEBUG - get_logo_image_url - Logo url received
+2023-05-30 23:32:03,048 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/SundanceVacations/325940462_395051859501150_1407098108888418396_n.jpg
+2023-05-30 23:32:03,273 - __main__ - ERROR - worker - Not received url of Profile photo
+2023-05-30 23:41:08,689 - __main__ - INFO - main - Getting logo from https://www.facebook.com/SundanceVacations
+2023-05-30 23:41:09,333 - controllers.scraper - DEBUG - get_logo_url - FB link of profile_photo received: https://www.facebook.com/photo/?fbid=655892086586590&set=a.655892093253256
+2023-05-30 23:41:09,625 - controllers.scraper - DEBUG - get_logo_image_url - Logo url received
+2023-05-30 23:41:09,658 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/SundanceVacations/325940462_395051859501150_1407098108888418396_n.jpg
+2023-05-30 23:41:09,658 - __main__ - INFO - main - Getting logo from https://www.facebook.com/CocaColaUkraine/?brand_redir=40796308305
+2023-05-30 23:41:09,874 - __main__ - ERROR - worker - Not received url of Profile photo
+2023-05-30 23:44:19,656 - __main__ - INFO - main - Getting logo from https://www.facebook.com/SundanceVacations
+2023-05-30 23:44:20,263 - controllers.scraper - DEBUG - get_logo_url - FB link of profile_photo received: https://www.facebook.com/photo/?fbid=655892086586590&set=a.655892093253256
+2023-05-30 23:44:20,562 - controllers.scraper - DEBUG - get_logo_image_url - Logo url received
+2023-05-30 23:44:20,592 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/SundanceVacations/325940462_395051859501150_1407098108888418396_n.jpg
+2023-05-30 23:44:20,592 - __main__ - INFO - main - Getting logo from https://www.facebook.com/CocaColaUkraine/?brand_redir=40796308305
+2023-05-30 23:44:20,806 - __main__ - ERROR - worker - Not received url of Profile photo
+2023-05-30 23:49:57,678 - __main__ - INFO - main - Getting logo from https://www.facebook.com/CocaColaUkraine/?brand_redir=40796308305
+2023-05-30 23:49:58,294 - controllers.scraper - DEBUG - get_logo_url - FB link of profile_photo received: https://www.facebook.com/CocaColaUkraine/photos/a.109409169697598/782538809051294/
+2023-05-30 23:49:58,806 - controllers.scraper - DEBUG - get_logo_image_url - Logo url received
+2023-05-30 23:49:58,839 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/CocaColaUkraine/145077263_782538815717960_19945207215603558_n.jpg
+2023-05-30 23:57:56,287 - __main__ - INFO - main - Getting logo from https://www.facebook.com/SundanceVacations
+2023-05-30 23:57:57,327 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/SundanceVacations/325940462_395051859501150_1407098108888418396_n.jpg
+2023-05-30 23:57:57,328 - __main__ - INFO - main - Getting logo from https://www.facebook.com/CocaColaUkraine/?brand_redir=40796308305
+2023-05-30 23:57:58,510 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/CocaColaUkraine/145077263_782538815717960_19945207215603558_n.jpg
+2023-05-30 23:57:58,511 - __main__ - INFO - main - Getting logo from https://www.facebook.com/pepsi
+2023-05-30 23:57:59,820 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/pepsi/1930531_963682620336046_2785544545517920868_n.jpg
+2023-05-30 23:57:59,821 - __main__ - INFO - main - Getting logo from https://www.facebook.com/walmart
+2023-05-30 23:58:01,368 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/walmart/321747721_1112667412753890_5159834232336164161_n.jpg
+2023-05-30 23:58:01,368 - __main__ - INFO - main - Getting logo from https://www.facebook.com/Tripadvisor/
+2023-05-30 23:58:02,873 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/Tripadvisor/83869326_10157917353051684_2764437343380176896_n.jpg
+2023-05-30 23:58:42,511 - __main__ - INFO - main - There are no links in input.txt file
+2023-05-30 23:59:07,942 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
+2023-05-30 23:59:08,366 - __main__ - CRITICAL - worker - cannot access local variable 'ex' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Server\data\htdocs\Fb\main.py", line 29, in worker
+    client.run(url)
+  File "c:\Server\data\htdocs\Fb\controllers\scraper.py", line 148, in run
+    url = self.check_fb_link(link)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Server\data\htdocs\Fb\controllers\scraper.py", line 143, in check_fb_link
+    raise exc.NoContent(ex)
+                        ^^
+UnboundLocalError: cannot access local variable 'ex' where it is not associated with a value
+2023-05-30 23:59:50,106 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
+2023-05-30 23:59:50,595 - __main__ - ERROR - worker - Not received url of Profile photo

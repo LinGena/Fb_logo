@@ -1,0 +1,5 @@
+
+class NoContent(Exception): pass
+
+
+
