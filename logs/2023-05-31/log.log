@@ -1,9 +1,0 @@
-2023-05-31 00:00:25,582 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
-2023-05-31 00:00:26,107 - __main__ - ERROR - worker - Not received url of Profile photo
-2023-05-31 00:05:23,083 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
-2023-05-31 00:05:24,552 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/profile.php/36468140_841067922758612_3971658680696307712_n.jpg
-2023-05-31 00:10:02,881 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
-2023-05-31 00:10:20,599 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
-2023-05-31 00:11:24,182 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
-2023-05-31 00:14:24,739 - __main__ - INFO - main - Getting logo from https://www.facebook.com/profile.php?id=100005662365567
-2023-05-31 00:14:25,529 - controllers.scraper - DEBUG - copy_logo - Copy logo to output/100005662365567/36468140_841067922758612_3971658680696307712_n.jpg
