@@ -1,65 +1,73 @@
 from controllers.scraper import GetFacebookLogo
 from models import exceptions as exc
 from utils.logger import Logger
-import os
+import argparse
+import json
 
 
 logger = Logger().get_logger(__name__)
 
 
-def get_tasks():
+def parse_cli():
+ 
+    msg_example = 'CLI example: python3 --url https://www.facebook.com/...'
 
-    filename = 'input.txt'
+    parser = argparse.ArgumentParser()
 
-    tasks = []
+    parser.add_argument('--url', help='link to Facebook page', default=None)
 
-    if os.path.exists(filename):
-
-        with open(filename, "r", encoding='utf8') as file:
-
-            tasks = file.read().splitlines()
-   
-    return tasks
-
-
-def worker(client, url):
+    parser.add_argument('--proxy', help='proxy adress. Without AUTH: socks5://PROXY_HOST:PROXY_PORT or with AUTH: http://PROXY_USER:PROXY_PASS@PROXY_HOST:PROXY_PORT', default=None)
 
     try:
+        
+        args = parser.parse_args()
 
-        client.run(url)
+    except:
+
+        raise exc.NoContent(f"Incorrect page link. {msg_example}")
+
+    if args.url == None:
+
+        raise exc.NoContent(f"You didn't provide a page link. {msg_example}")
+    
+    if 'facebook' not in args.url:
+
+        raise exc.NoContent(f"Incorrect page link. {msg_example}")
+    
+    return args
+
+
+
+def main():
+
+    try:
+        args = parse_cli()
+
+        client = GetFacebookLogo() 
+
+        link = client.run(args)
+
+        response = {'success': True, 'image_url': link}
 
     except exc.NoContent as ex:
 
         logger.error(ex)
 
+        response = {'success': False, 'error': f'{ex}'}
+
     except Exception as ex:
 
         logger.critical(ex, exc_info=True)
 
-
-def main():
-
-    client = GetFacebookLogo() 
-
-    tasks = get_tasks()
-
-    if len(tasks) > 0:
-
-        for url in tasks:
-
-            logger.info(f'Getting logo from {url}')
-
-            worker(client, url)
-
-    else:
-
-        logger.info('There are no links in input.txt file')
+        response = {'success': False, 'error': f'{ex}'}
+    
+    return json.dumps(response)
 
 
 
-           
 if __name__ == "__main__":
-    main()
+
+    print (main())
 
 
 

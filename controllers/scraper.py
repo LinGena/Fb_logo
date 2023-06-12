@@ -53,21 +53,32 @@ class GetFacebookLogo():
 
         scraper = cfscrape.create_scraper() 
 
-        scraped_data = scraper.get(url=link)
+        if self.proxy == None:
+
+            scraped_data = scraper.get(url=link)
+
+        else:
+
+            proxies = { 
+                'http':f'{self.proxy}',
+                'https':f'{self.proxy}',
+            } 
+
+            scraped_data = scraper.get(url=link, proxies=proxies)
 
         res = scraped_data.text
 
         return res
 
 
-    def check_dir(self, dir):
+    def check_dir(self, dir: str) -> None:
 
         if not Path(dir).is_dir():
 
             os.mkdir(dir, mode=0o777, dir_fd=None)
 
 
-    def get_image_name(self, image_path):
+    def get_image_name(self, image_path: str) -> str:
 
         nameImg = image_path.split("/")[-1]
 
@@ -110,7 +121,7 @@ class GetFacebookLogo():
         return res
 
 
-    def copy_logo(self, image_path: str, fb_link: str):
+    def copy_logo(self, image_path: str, fb_link: str) -> str:
 
         image = requests.get(image_path)
 
@@ -125,6 +136,8 @@ class GetFacebookLogo():
             file.write (image.content)
         
         self._loger.debug(f'Copy logo to {filename_to}')
+
+        return filename_to
 
 
     def check_fb_link(self, fb_link: str) -> str:
@@ -162,15 +175,19 @@ class GetFacebookLogo():
         raise exc.NoContent('Not received url of Profile photo')
 
 
-    def run(self, link: str):
+    def run(self, args: dict) -> str:
 
-        url = self.check_fb_link(link)
+        self.proxy = args.proxy
+
+        url = self.check_fb_link(args.url)
 
         src = self.get_content(url)
 
         logo_url = self.get_logo_image_url(src)
 
-        self.copy_logo(logo_url, link)
+        link = self.copy_logo(logo_url, args.url)
+
+        return link
 
 
 

@@ -1,5 +1,9 @@
 *.log
 *.pyc
+.pyc
 .local
 .pki
 .config
+venv
+output
+input.txt
