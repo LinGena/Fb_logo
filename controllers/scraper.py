@@ -6,6 +6,9 @@ import requests
 import os
 from pathlib import Path
 from urllib.parse import urlparse
+import base64 
+from PIL import Image
+from io import BytesIO
 
 
 class GetFacebookLogo():
@@ -173,9 +176,53 @@ class GetFacebookLogo():
                 continue
 
         raise exc.NoContent('Not received url of Profile photo')
+    
+
+    def get_logo_dict(self, image_path: str) -> dict:
+
+        image = requests.get(image_path)
+
+        result = {}
+
+        result['fb_logo_link'] = image_path
+
+        content = base64.b64encode(image.content)
+
+        result.update(self.get_Img_metas(image.content))
+
+        result['image_base64_content'] = content.decode("UTF-8") 
+
+        return result
+    
+
+    def get_Img_metas(self, content):
+
+        try:
+
+            image = Image.open(BytesIO(content))
+
+            info_dict = {        
+                "width": image.width,
+                "height": image.height,
+                "pixels": image.width * image.height,
+                "type": image.format
+            }
+        
+        except Exception as ex:
+
+            self._loger.error(ex)
+
+            info_dict = {        
+                    "width": 0,
+                    "height": 0,
+                    "pixels": 0,
+                    "type": ''
+                }
+            
+        return info_dict
 
 
-    def run(self, args: dict) -> str:
+    def run(self, args: dict) -> dict:
 
         self.proxy = args.proxy
 
@@ -185,9 +232,11 @@ class GetFacebookLogo():
 
         logo_url = self.get_logo_image_url(src)
 
-        link = self.copy_logo(logo_url, args.url)
+        # link = self.copy_logo(logo_url, args.url)
 
-        return link
+        return self.get_logo_dict(logo_url)
+
+
 
 
 

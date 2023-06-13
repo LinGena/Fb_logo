@@ -45,9 +45,11 @@ def main():
 
         client = GetFacebookLogo() 
 
-        link = client.run(args)
+        response = {}
 
-        response = {'success': True, 'image_url': link}
+        response['success'] = True
+        
+        response.update(client.run(args))
 
     except exc.NoContent as ex:
 
@@ -68,6 +70,4 @@ def main():
 if __name__ == "__main__":
 
     print (main())
-
-
 
